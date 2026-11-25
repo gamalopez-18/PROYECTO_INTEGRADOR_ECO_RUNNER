@@ -1,0 +1,119 @@
+# Diagramas UML — Eco-Runner
+
+Modelado arquitectónico y de comportamiento del videojuego *Eco-Runner* para su implementación orientada a objetos en *Python (Pygame)*.
+
+---
+
+## 1. Diagrama de Casos de Uso General
+Representa las interacciones principales del jugador dentro del sistema de juego.
+
+mermaid
+flowchart TD
+    Jugador((Jugador))
+
+    subgraph Sistema["Eco-Runner - Sistema de Juego"]
+        UC1[Navegar por ubicaciones]
+        UC2[Recolectar basura contra tiempo]
+        UC3[Clasificar residuos en contenedores]
+        UC4[Ganar monedas]
+        UC5[Consultar progreso y temporizador]
+    end
+
+    Jugador --> UC1
+    Jugador --> UC2
+    Jugador --> UC3
+    Jugador --> UC4
+    Jugador --> UC5
+
+
+---
+
+## 2. Diagrama de Clases del Módulo Principal
+Estructura de clases y relaciones entre el jugador, los niveles, los residuos, los contenedores y el sistema de recompensas en Python.
+
+mermaid
+classDiagram
+    class SistemaRecompensa {
+        +int multiplicadorPuntos
+        +calcularMonedas(int residuosCorrectos) int
+    }
+
+    class Jugador {
+        +int idJugador
+        +string nombre
+        +int monedasObtenidas
+        +mover()
+        +recolectarBasura(Basura b)
+        +clasificarBasura(Basura b, ContenedorReciclaje c)
+    }
+
+    class Nivel {
+        +string numeroNivel
+        +float tiempoLimite
+        +int metaResiduos
+        +string ubicacion
+        +iniciarNivel()
+        +verificarTiempo()
+        +finalizarNivel()
+    }
+
+    class Basura {
+        +int idBasura
+        +string tipo
+        +desaparecer()
+    }
+
+    class ContenedorReciclaje {
+        +int idContenedor
+        +string tipoAceptado
+        +validarResiduo(Basura b) bool
+    }
+
+    SistemaRecompensa ..> Jugador : otorga monedas a
+    Jugador "1" --> "*" Basura : recolecta
+    Jugador "1" --> "*" ContenedorReciclaje : deposita en
+    Nivel "1" *-- "*" Basura : contiene
+    Nivel "1" *-- "3" ContenedorReciclaje : posee
+
+
+---
+
+## 3. Diagrama de Secuencia: Escenario Principal de Partida
+Flujo cronológico de una ronda completa desde que inicia el nivel hasta la obtención de monedas (Recolecta → Corre → Clasifica → Gana).
+
+mermaid
+sequenceDiagram
+    actor J as Jugador
+    participant N as Nivel (Pygame)
+    participant B as Basura
+    participant C as ContenedorReciclaje
+    participant R as SistemaRecompensa
+
+    J->>N: iniciarNivel()
+    activate N
+    N-->>J: Muestra escenario y temporizador (02:16)
+
+    loop Mientras tiempo > 00:00
+        J->>N: mover()
+        J->>B: recolectarBasura(b)
+        activate B
+        B-->>N: desaparecer() y actualizar HUD
+        deactivate B
+    end
+
+    J->>C: clasificarBasura(b, c)
+    activate C
+    C->>C: validarResiduo(b)
+    alt Contenedor Correcto
+        C-->>J: Depósito exitoso
+        C->>R: calcularMonedas(residuosCorrectos)
+        activate R
+        R-->>J: Otorga monedas y actualiza marcador
+        deactivate R
+    else Contenedor Incorrecto
+        C-->>J: Alerta visual/sonora de error
+    end
+    deactivate C
+
+    N->>N: finalizarNivel()
+    deactivate N

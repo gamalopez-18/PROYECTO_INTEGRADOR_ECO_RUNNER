@@ -2,9 +2,9 @@
 Videojuego educativo 2D en Python (Pygame) inspirado en el ODS 11: Recolecta, Corre, Clasifica y Gana.
 <div align="center">
 
-  <img src="3-pantallas/logo-ecorunner.png" alt="Logo Eco-Runner" width="340"/>
+  <img src="3-pantallas/logo-ecorunner.png.jpg" alt="Logo Eco-Runner: Mundo Sano" width="340"/>
 
-  # 🌱 ECO-RUNNER — Videojuego Educativo Ambiental
+  # 🌱 ECO-RUNNER: MUNDO SANO — Videojuego Educativo Ambiental
   *Recolecta · Corre · Clasifica · Gana — Inspirado en el ODS 11 (Ciudades y Comunidades Sostenibles)*
 
   <br/>
@@ -35,7 +35,7 @@ Videojuego educativo 2D en Python (Pygame) inspirado en el ODS 11: Recolecta, Co
 
 ## Descripción del proyecto
 
-**Eco-Runner** es un videojuego 2D en perspectiva cenital (*top-down*) con estética *pixel art* desarrollado en **Python** mediante la librería **Pygame**, diseñado para fomentar la cultura del reciclaje y el cuidado de los espacios públicos en alineación con el **Objetivo de Desarrollo Sostenible 11 (Ciudades y Comunidades Sostenibles)**[cite: 1, 2, 3].
+**Eco-Runner: Mundo Sano** es un videojuego 2D en perspectiva cenital (*top-down*) con estética *pixel art* desarrollado en **Python** mediante la librería **Pygame**, diseñado para fomentar la cultura del reciclaje y el cuidado de los espacios públicos en alineación con el **Objetivo de Desarrollo Sostenible 11 (Ciudades y Comunidades Sostenibles)**.
 
 El jugador recorre distintos escenarios contaminados (parque urbano, bosque y playa) para recolectar residuos contrarreloj y clasificarlos correctamente en los contenedores de reciclaje a cambio de monedas.
 
@@ -49,15 +49,16 @@ El proyecto documenta las primeras fases del ciclo de vida del desarrollo de sof
 
 ```text
 PROYECTO_INTEGRADOR_ECO_RUNNER/
-├── README.md                 # Documentación principal y presentación del proyecto
-├── 1-requerimientos/         # Fase 1: Especificación de Requerimientos (IEEE 830)
-│   └── SRS.md                # Requerimientos funcionales, no funcionales y criterios de aceptación
-├── 2-uml/                    # Fase 2: Modelado y Arquitectura del Sistema
-│   └── diagramas.md          # Diagramas de Casos de Uso, Clases y Secuencia
-└── 3-pantallas/              # Fase 3: Diseño de Interfaces (UI/UX) y Arte Conceptual
-    ├── 01-inicio.png
-    ├── 02-seleccion-nivel.png
-    ├── 03-juego-principal.png
-    ├── 04-clasificacion.png
-    ├── 05-resultados.png
-    └── 06-personaje.png
+├── README.md                        # Documentación principal y presentación del proyecto
+├── 1-requerimientos/                # Fase 1: Especificación de Requerimientos (IEEE 830)
+│   └── SRS.md                       # Requerimientos funcionales, no funcionales y criterios de aceptación
+├── 2-uml/                           # Fase 2: Modelado y Arquitectura del Sistema
+│   └── diagramas.md                 # Diagramas de Casos de Uso, Clases y Secuencia
+└── 3-pantallas/                     # Fase 3: Diseño de Interfaces (UI/UX) y Arte Conceptual
+    ├── logo-ecorunner.png.jpg
+    ├── 01-inicio.png.jpeg
+    ├── 02-seleccion-nivel.png.jpeg
+    ├── 03-juego-principal.png.jpeg
+    ├── 04-clasificacion.png.jpg
+    ├── 05-resultados.png.jpg
+    └── 06-personaje.png.jpg
